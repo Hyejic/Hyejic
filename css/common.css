@@ -1,0 +1,9 @@
+html,body{
+  font-size: 0.0694vw;
+}
+@media screen and (min-width : 1440px){
+  html,body{
+    font-size: 1px;
+  } 
+}
+

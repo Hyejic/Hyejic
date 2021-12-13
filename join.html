@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Document</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    body{
+      background-color: #eeeeee;
+      padding: 0 30em;
+    }
+    .cont-wrap{
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 50px 0;
+      box-sizing: border-box;
+    }
+    .nav-box{
+      width: 100%;
+      border: 1px solid #aaa;
+      background-color: #e5e5e5;
+      display: flex;
+      /* justify-content: space-around; */
+      box-sizing: border-box;
+    }
+    .nav-box > div{
+      width: 25%;
+      padding: 17rem 0 15rem;
+      font-size: 15em;
+      font-weight: bold;
+      text-align: center;
+      color: #888;
+    }
+    .nav-box > div.active{
+      background-color: #27AFA7;
+      color:#fff;
+    }
+    .nav-box > div + div{
+      border-left: 1px solid #aaa;
+    }
+    .txtbox{
+      padding: 70em 0 20em;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    .txtbox strong{
+      font-size: 20em;
+      font-weight: bold;
+    }
+    .txtbox p{
+      margin-top: 30rem;
+      font-size: 16em;
+      color: #666;
+    }
+    .count-box{
+      padding: 30em 0;
+      text-align: center;
+    }
+    .count-box__num{
+      font-size: 16em;
+    }
+    .count-box__num em{
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-right: 0.1em;
+    }
+    .count-box__desc{
+      margin-top: 0.8em;
+      font-size: 14em;
+    }
+    .btn{
+      cursor: pointer;
+      display: block;
+      padding: 0.8em 2.3em;
+      margin: 0 auto;
+      font-size: 16em;
+      font-weight: bold;
+      color: #fff;
+      background-color: #0070AE;
+      border: 1px solid #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="cont-wrap">
+    <nav class="nav-box">
+      <div>01. 약관동의</div>
+      <div>02. 본인인증</div>
+      <div>03. 정보입력</div>
+      <div class="active">04. 가입완료</div>
+    </nav>
+    
+    <div class="txtbox">
+      <strong>&quot회원가입이 완료되었습니다.&quot</strong>
+      <p>인천교통약자 이동지원센터는 회원님의 소중한 정보를 신중하게 취급하고 있습니다.</p>
+    </div>
+  
+    <div class="count-box">
+      <span class="count-box__num"><em>5</em>초</span>
+      <p class="count-box__desc">&#40;&quot5초&quot후 자동으로 이동합니다.&#41;</p>
+    </div>
+  
+    <button type="button" class="btn">로그인</button>
+  </div>
+
+  <script>
+    const btn = document.querySelector('.btn');
+    const secTxt = document.querySelector('.count-box__num em');
+    
+    // load 후 실행
+    window.addEventListener('load', () => {
+      
+      let secValue = 5; // 감소 시킬 시간 초기화
+
+      // 중첩 setTimeout으로 1초마다 실행
+      const movePage = setTimeout(function tick() {
+        secValue--;
+        // console.log(`${secValue}초`);
+        const nestingTimer = setTimeout(tick, 1000);
+        
+        if(secValue === 0){
+          clearTimeout(nestingTimer);
+          pageMove();
+        }else{
+          secTxt.textContent = secValue;
+        }
+      }, 1000);
+    });
+
+    // 로그인하기 버튼 클릭 페이지 이동
+    btn.addEventListener('click', () => {
+      pageMove();
+    });
+
+    // 페이지 이동
+    function pageMove() {
+      location.href='./login.html';
+    };
+  </script>
+</body>
+</html>
