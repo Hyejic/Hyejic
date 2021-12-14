@@ -297,6 +297,7 @@
       light();
       setTimeout(shine, 1200);
     }, 1000);
+
     function light() {
       const lightEls = document.querySelectorAll('.light div');
       
@@ -304,9 +305,9 @@
         setTimeout(() => {
           lightEl.classList.add('shine');
         },600)
-        // setTimeout(() => {
-        //   lightEl.classList.remove('shine');
-        // },1200)
+        setTimeout(() => {
+          lightEl.classList.remove('shine');
+        },1200)
       })
     }
 
@@ -323,8 +324,8 @@
         snow.style.zIndex = -1; // snow의 z-index
       }
       snow.style.animationDuration = `${Math.random() * 3 + 2}s`; // snow의 애니메이션 지속시간
-      wrap.appendChild(snow); //body에 snow 생성
-      setTimeout(() => snow.remove(), 4000); // 3초 뒤에 snow 삭제
+      wrap.appendChild(snow); //wrap에 snow 생성
+      setTimeout(() => snow.remove(), 4000); // 4초 뒤에 snow 삭제
     }
   </script>
 </body>
